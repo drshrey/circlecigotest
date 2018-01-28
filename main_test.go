@@ -41,5 +41,8 @@ func TestMakeOther(t *testing.T) {
 	db.Create(&entry)
 	assert.Equal(t, false, entry.Property)
 	makeOther(db, &entry)
-	assert.Equal(t, true, entry.Property)
+
+	modifiedEntry := models.Entry{}
+	db.Where("id = ?", entry.Model.ID.String()).Find(&modifiedEntry)
+	assert.Equal(t, true, modifiedEntry.Property)
 }
