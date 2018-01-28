@@ -35,9 +35,12 @@ func makeOther(db *gorm.DB, entry *models.Entry) {
 	db.Save(entry)
 }
 
+func subtract(x int, y int) int {
+	return x - y
+}
+
 func main() {
 	fmt.Printf("2 + 2 = %d\n", add(2, 2))
-
 	err := migrate()
 	if err != nil {
 		fmt.Println(err.Error())
@@ -75,4 +78,5 @@ func main() {
 	// 	fmt.Println(rows)
 	// }
 
+	fmt.Printf("2 - 2 = %d\n", subtract(2, 2))
 }
