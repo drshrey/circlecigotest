@@ -27,5 +27,8 @@ jobs:
       - checkout
 
       # specify any bash command here prefixed with `run: `
+      - run:
+        command: sudo -u postgres psql -p 5432 -c "create user drshrey;"
+        command: sudo -u postgres psql -p 5432 -c "CREATE EXTENSION IF NOT EXISTS "uuid-ossp";"
       - run: go get -v -t -d ./...
       - run: go test -v ./...
